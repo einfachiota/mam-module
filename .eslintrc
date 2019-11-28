@@ -1,0 +1,33 @@
+{
+    "env": {
+      "node": 1,
+      "browser": 1
+    },
+    "globals": {
+      "exampleGlobalVariable": true
+    },
+    "rules": {
+      "eqeqeq": 1,
+      "prettier/prettier": 
+       [
+         "error", 
+        {
+            "endOfLine":"auto"
+        }
+      ]
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "globalReturn": true,
+        "generators": false,
+        "objectLiteralDuplicateProperties": false,
+        "experimentalObjectRestSpread": true,
+        "jsx": true
+      },
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    }
+  }
