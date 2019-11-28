@@ -12,13 +12,7 @@ console.log(
 const runOptionsQuestions = async () => {
     const _options = await inquirer.askForOptions()
     console.log(_options)
-    let x = Options.createFile(_options)
-    console.log('x', x)
-    if (x) {
-        console.log(chalk.greenBright('Options file created.'))
-    } else {
-        console.log(chalk.redBright('Options file not created.'))
-    }
+    Options.createFile(_options)
 }
 
 if (Options.fileExists()) {
