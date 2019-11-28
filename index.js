@@ -25,4 +25,3 @@ const run = async () => {
 }
 
 run()
-console.log(chalk.greenBright('"MAM-Module started.'))
