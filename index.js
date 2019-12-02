@@ -3,6 +3,9 @@ const clear = require('clear')
 const figlet = require('figlet')
 const Options = require('./lib/options')
 const inquirer = require('./lib/inquirer')
+const express = require('express')
+const app = express()
+const mamModule = require('./lib/mam-server')
 
 clear()
 
@@ -17,7 +20,12 @@ const runOptionsQuestions = async () => {
 
 if (Options.fileExists()) {
     console.log(chalk.yellow('Already a options file existing.'))
-    process.exit()
+    console.log(chalk.yellow('Start server...'))
+    let server = mamModule.createServer(app, {})
+
+    server.listen(3000, function() {
+        console.log(`Server started on http://localhost:3000 `)
+    })
 } else {
     console.log(chalk.green('Creating options file...'))
     runOptionsQuestions()
