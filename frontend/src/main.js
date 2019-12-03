@@ -11,6 +11,7 @@ import '@/styles/index.scss' // global css
 import App from './App'
 import store from './store'
 import router from './router'
+import moment from 'moment'
 
 import '@/icons' // icon
 import '@/permission' // permission control
@@ -27,6 +28,12 @@ import { mockXHR } from '../mock'
 if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
+
+Vue.filter('formatTimestampToDate', function(timestamp) {
+  if (timestamp) {
+    return moment(timestamp).format('MM.DD.YY, HH:MM')
+  }
+})
 
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })

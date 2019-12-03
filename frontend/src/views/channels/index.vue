@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+    <new-channel></new-channel>
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -15,13 +16,13 @@
       </el-table-column>
       <el-table-column label="Root">
         <template slot-scope="scope">
-          {{ scope.row.channel.root }}
+         <pre>{{ scope.row.channel.root }}</pre>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="Display_time" width="200">
+      <el-table-column align="center" prop="created" label="Erstell am" width="200">
         <template slot-scope="scope">
           <i class="el-icon-time" />
-          <span>{{ scope.row.timestamp }}</span>
+          <span>{{ scope.row.timestamp | formatTimestampToDate }}</span>
         </template>
       </el-table-column>
     </el-table>
@@ -29,9 +30,11 @@
 </template>
 
 <script>
-import { getList } from '@/api/channel'
+import { getChannels } from '@/api/channel'
+import newChannel from './new'
 
 export default {
+  components: { newChannel },
   filters: {
     statusFilter(status) {
       const statusMap = {
@@ -54,7 +57,7 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true
-      getList().then(response => {
+      getChannels().then(response => {
         console.log('response', response)
         this.list = response
         this.listLoading = false
