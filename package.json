@@ -15,6 +15,7 @@
   "author": "huhn511",
   "license": "MIT",
   "dependencies": {
+    "@iota/mam": "^0.7.3",
     "body-parser": "^1.19.0",
     "chalk": "^3.0.0",
     "clear": "^0.1.0",
