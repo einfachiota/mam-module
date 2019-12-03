@@ -9,19 +9,19 @@ export function getChannels(params) {
   })
 }
 
-export function createChannel(params) {
+export function createChannel(data) {
   return request({
     url: '/channels',
     method: 'post',
-    params
+    data
   })
 }
 
-export function createMessage(id, params) {
+export function createMessage(id, data) {
   return request({
     url: '/channels/' + id,
     method: 'post',
-    params
+    data
   })
 }
 
