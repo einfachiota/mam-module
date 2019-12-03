@@ -25,3 +25,9 @@ export function createMessage(id, data) {
   })
 }
 
+export function getMessages(id) {
+  return request({
+    url: '/channels/' + id,
+    method: 'get'
+  })
+}
