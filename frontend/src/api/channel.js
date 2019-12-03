@@ -16,3 +16,12 @@ export function createChannel(params) {
     params
   })
 }
+
+export function createMessage(id, params) {
+  return request({
+    url: '/channels/' + id,
+    method: 'post',
+    params
+  })
+}
+

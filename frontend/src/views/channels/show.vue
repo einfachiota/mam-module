@@ -1,14 +1,17 @@
 <template>
     <div class="tab-container">
+        <new-message :channel_id="channel.id"></new-message>
         <pre>{{channel}}</pre>
     </div>
 </template>
 
 <script>
+import newMessage from './new_message'
 
 export default {
+  
   name: 'ShowChannel',
-  components: { },
+  components: { newMessage },
   params: ['channel'],
   data() {
     return {

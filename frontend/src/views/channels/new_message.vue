@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button type="primary" @click="openDialog">Create channel</el-button>
+    <el-button type="primary" @click="openDialog">Create Message</el-button>
     <el-dialog v-el-drag-dialog :visible.sync="dialogTableVisible" title="Create channel">
       <el-form :model="form" class="demo-form-inline">
         <el-form-item label="Name">
@@ -16,9 +16,10 @@
 
 <script>
 import elDragDialog from '@/directive/el-drag-dialog' // base on element-ui
-import { createChannel } from '@/api/channel'
+import { createMessage } from '@/api/channel'
 
 export default {
+  props: ['channel_id'],
   directives: { elDragDialog },
   data() {
     return {
@@ -34,7 +35,7 @@ export default {
     },
     onSubmit() {
       this.dialogTableVisible = false
-      createChannel(this.form).then(
+      createMessage(this.channel_id, this.form).then(
         response => {
           console.log('response', response)
         },
