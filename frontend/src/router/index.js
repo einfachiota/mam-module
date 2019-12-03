@@ -64,6 +64,14 @@ export const constantRoutes = [
         name: 'Channels',
         component: () => import('@/views/channels/index'),
         meta: { title: 'Channels', icon: 'table' }
+      },
+      {
+        path: '/channels/:id(\\d+)',
+        component: () => import('@/views/channels/show'),
+        name: 'ShowChannel',
+        meta: { title: 'Channel details', noCache: true },
+        hidden: true,
+        props: true
       }
     ]
   },

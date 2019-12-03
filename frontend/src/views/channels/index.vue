@@ -25,6 +25,12 @@
           <span>{{ scope.row.timestamp | formatTimestampToDate }}</span>
         </template>
       </el-table-column>
+         <el-table-column label="Actions" width="200"> 
+        <template slot-scope="scope">
+            <el-button @click="$router.push({name: 'ShowChannel', params: {channel: scope.row}})" type="success" icon="el-icon-view" circle></el-button>
+            <el-button @click="openMamVIewer(scope.row)" type="primary" icon="el-icon-tickets" circle></el-button>
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
@@ -62,6 +68,10 @@ export default {
         this.list = response
         this.listLoading = false
       })
+    },
+    openMamVIewer(channel) {
+      let provider = 'https://nodes.devnet.iota.org'
+      window.open(`https://mam-explorer.firebaseapp.com/?provider=${provider}&mode=restricted&key=${channel.channel.state.channel.side_key}&root=${channel.channel.root}`, "_blank");    
     }
   }
 }
