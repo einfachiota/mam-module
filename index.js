@@ -28,7 +28,7 @@ const startServer = () => {
     })
 }
 
-if (Options.fileExists()) {
+if (Options.exist()) {
     console.log(chalk.yellow('Already a options file existing.'))
     startServer()
 } else {
