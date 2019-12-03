@@ -16,16 +16,21 @@ const runOptionsQuestions = async () => {
     const _options = await inquirer.askForOptions()
     console.log(_options)
     Options.createFile(_options)
+    startServer()
 }
 
-if (Options.fileExists()) {
-    console.log(chalk.yellow('Already a options file existing.'))
+const startServer = () => {
     console.log(chalk.yellow('Start server...'))
     let server = mamModule.createServer(app, {})
 
     server.listen(3000, function() {
         console.log(`Server started on http://localhost:3000 `)
     })
+}
+
+if (Options.fileExists()) {
+    console.log(chalk.yellow('Already a options file existing.'))
+    startServer()
 } else {
     console.log(chalk.green('Creating options file...'))
     runOptionsQuestions()
